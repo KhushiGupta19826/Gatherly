@@ -21,7 +21,17 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+const clientOrigin = process.env.CLIENT_URL;
+app.use(
+  cors({
+    origin: clientOrigin
+      ? clientOrigin.includes(",")
+        ? clientOrigin.split(",").map((url) => url.trim())
+        : clientOrigin
+      : "*",
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -52,7 +62,7 @@ const PORT = process.env.PORT || 5001;
 
 if (require.main === module) {
   connectDB();
-  app.listen(PORT, () => {
+  app.listen(PORT, "0.0.0.0", () => {
     console.log(`FocusCircle server running on port ${PORT}`);
   });
 }

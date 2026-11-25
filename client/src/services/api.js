@@ -1,4 +1,7 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5001/api";
+// Normalize base API URL to ensure it points to the API root without trailing slash
+const rawApiUrl = import.meta.env.VITE_API_URL || "http://localhost:5001/api";
+const cleanApiUrl = rawApiUrl.replace(/\/+$/, "");
+const API_URL = cleanApiUrl.endsWith("/api") ? cleanApiUrl : `${cleanApiUrl}/api`;
 
 const TOKEN_KEY = "focuscircle_token";
 

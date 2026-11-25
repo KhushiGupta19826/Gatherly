@@ -1,6 +1,6 @@
 # Gatherly
 
-FocusCircle is a full-stack study accountability application designed to close the gap between planning and execution. It pairs intention setting with distraction-free focus rooms, a post-session reflection loop, and progress analytics.
+Gatherly is a full-stack study accountability application designed to close the gap between planning and execution. It pairs intention setting with distraction-free focus rooms, a post-session reflection loop, and progress analytics.
 
 ---
 
