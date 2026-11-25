@@ -1,6 +1,8 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv");
 const dns = require("dns");
 
 try {
@@ -16,8 +18,6 @@ const roomRoutes = require("./routes/roomRoutes");
 const sessionRoutes = require("./routes/sessionRoutes");
 const checkinRoutes = require("./routes/checkinRoutes");
 const analyticsRoutes = require("./routes/analyticsRoutes");
-
-dotenv.config();
 
 const app = express();
 
@@ -61,9 +61,10 @@ app.use("/api/analytics", analyticsRoutes);
 const PORT = process.env.PORT || 5001;
 
 if (require.main === module) {
-  connectDB();
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`FocusCircle server running on port ${PORT}`);
+  connectDB().then(() => {
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`FocusCircle server running on port ${PORT}`);
+    });
   });
 }
 

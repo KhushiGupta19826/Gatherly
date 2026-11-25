@@ -43,9 +43,9 @@ const registerUser = async (req, res) => {
       },
     });
   } catch (error) {
+    console.error("Register error:", error.message);
     res.status(500).json({
-      message: "Registration failed",
-      error: error.message,
+      message: "Registration failed. Please try again later.",
     });
   }
 };
@@ -94,9 +94,9 @@ const loginUser = async (req, res) => {
       },
     });
   } catch (error) {
+    console.error("Login error:", error.message);
     res.status(500).json({
-      message: "Login failed",
-      error: error.message,
+      message: "Login failed. Please try again later.",
     });
   }
 };
